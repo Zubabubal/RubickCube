@@ -3,9 +3,11 @@
 #include <random>
 #include <fstream>
 #include <string> 
+
 using namespace std;
 
 int RandomNumber(int a, int b);
+int add(int a, int b);
 
 class Cube
 {
@@ -21,6 +23,8 @@ private:
 	int getCornerIndex(int face, int position);
 
 public:
+
+	char getFace(int face, int row, int col) const; 
 
 	void TempRowChange(int face, int row, int way);
 
@@ -47,6 +51,8 @@ public:
 	void transferToCube();
 
 	bool isSolvable();
+
+	int countChanges(const Cube& initialState) const; 
 };
 
 void MainMenu();
