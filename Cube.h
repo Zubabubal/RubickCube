@@ -7,7 +7,6 @@
 using namespace std;
 
 int RandomNumber(int a, int b);
-int add(int a, int b);
 
 class Cube
 {
@@ -54,9 +53,3 @@ public:
 
 	int countChanges(const Cube& initialState) const; 
 };
-
-void MainMenu();
-
-void MoveMenu();
-
-int RandomNumber(int a, int b);
