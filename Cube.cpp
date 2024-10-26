@@ -69,7 +69,8 @@ void Cube::TempRowChange(int face, int row, int way)
 
 }
 
-char Cube:: getFace(int face, int row, int col) const {
+char Cube:: getFace(int face, int row, int col) const
+{
 	return cube[face][row][col];
 }
 
@@ -107,7 +108,7 @@ void Cube::print()
 	}
 	cout << endl;
 }
-//+
+
 void Cube::FillingTheCube(Cube& cube1)
 {
 	const char faces[6] = { 'W', 'R', 'Y', 'O', 'B', 'G' };
@@ -122,7 +123,7 @@ void Cube::FillingTheCube(Cube& cube1)
 		}
 	}
 }
-//+
+
 void Cube::RightColumnMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -181,7 +182,7 @@ void Cube::RightColumnMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
+
 void Cube::LeftColumnMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -240,7 +241,7 @@ void Cube::LeftColumnMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
+
 void Cube::HighRowMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -299,7 +300,7 @@ void Cube::HighRowMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
+
 void Cube::DownRowMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -358,8 +359,7 @@ void Cube::DownRowMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
-//+
+
 void Cube::FrontFaceMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -418,7 +418,7 @@ void Cube::FrontFaceMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
+
 void Cube::BackFaceMove(Cube& cube, int& selectTurn)
 {
 	char tempFace[3][3];
@@ -479,7 +479,7 @@ void Cube::BackFaceMove(Cube& cube, int& selectTurn)
 		break;
 	}
 }
-//+
+
 void Cube::RandomFilling(Cube& cube)
 {
 	FillingTheCube(cube);
@@ -525,8 +525,9 @@ void Cube::RandomFilling(Cube& cube)
 		}
 	}
 }
-//+
-int Cube::countChanges(const Cube& initialState) const {
+
+int Cube::countChanges(const Cube& initialState) const
+{
 	int changes = 0;
 	for (int i = 0; i < 6; ++i) {
 		for (int j = 0; j < 3; ++j) {
@@ -539,7 +540,7 @@ int Cube::countChanges(const Cube& initialState) const {
 	}
 	return changes;
 }
-//+
+
 void Cube::ReadCubeFromFile(const string& filename)
 {
 	std::ifstream file(filename + ".txt");
@@ -604,7 +605,7 @@ void Cube::transferToCube()
 		}
 	}
 
-	std::cout << "Cube loaded from the selected file\n";
+	cout << "Cube loaded from the selected file\n";
 }
 
 bool Cube::isSolvable() {
@@ -692,35 +693,4 @@ bool Cube::isSolvable() {
 	int totalParity = (edgeParity + cornerParity) % 2;
 
 	return totalParity == 0;
-}
-
-void MainMenu()
-{
-	cout << "\n\tMenu:\n";
-	cout << "Enter 1 to create normal cube\n";
-	cout << "Enter 2 to create random cube\n";
-	cout << "Enter 3 to create cube from file data\n";
-	cout << "Enter 4 to check the cube\n";
-	cout << "Enter 5 to see the cube\n";
-	cout << "Enter 6 to move faces\n";
-	cout << "Enter 7 to quit\n\n";
-}
-
-void MoveMenu()
-{
-	cout << "Enter 1 to move left column" << endl;
-	cout << "Enter 2 to move right column" << endl;
-	cout << "Enter 3 to move high row" << endl;
-	cout << "Enter 4 to move down row" << endl;
-	cout << "Enter 5 to move front face" << endl;
-	cout << "Enter 6 to move back face" << endl;
-}
-
-int RandomNumber(int a, int b)
-{
-	random_device random_device;
-	mt19937 generator(random_device());
-	uniform_int_distribution<> distribution(a, b);
-	int number = distribution(generator);
-	return number;
 }
