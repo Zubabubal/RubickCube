@@ -153,7 +153,6 @@ void Cube::RightColumnMove(Cube& cube, int& selectTurn)
 			cube.cube[1][i][1] = tempFace[1][i];
 			cube.cube[1][i][2] = tempFace[0][i];
 		}
-		cout << "Action Completed!(Right column up)\n";
 		selectTurn = 0;
 		break;
 
@@ -172,12 +171,10 @@ void Cube::RightColumnMove(Cube& cube, int& selectTurn)
 			cube.cube[1][1][i] = tempFace[i][1];
 			cube.cube[1][2][i] = tempFace[i][0];
 		}
-		cout << "Action Completed!(Right column down)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -212,7 +209,6 @@ void Cube::LeftColumnMove(Cube& cube, int& selectTurn)
 			cube.cube[3][1][i] = tempFace[i][1];
 			cube.cube[3][2][i] = tempFace[i][0];
 		}
-		cout << "Action Completed!(Left column up)\n";
 		selectTurn = 0;
 		break;
 
@@ -231,12 +227,10 @@ void Cube::LeftColumnMove(Cube& cube, int& selectTurn)
 			cube.cube[3][i][1] = tempFace[1][i];
 			cube.cube[3][i][2] = tempFace[0][i];
 		}
-		cout << "Action Completed!(left column down)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -271,7 +265,6 @@ void Cube::HighRowMove(Cube& cube, int& selectTurn)
 			cube.cube[4][i][1] = tempFace[1][i];
 			cube.cube[4][i][2] = tempFace[0][i];
 		}
-		cout << "Action Completed!(High row clockwise)\n";
 		selectTurn = 0;
 		break;
 
@@ -290,12 +283,10 @@ void Cube::HighRowMove(Cube& cube, int& selectTurn)
 			cube.cube[4][1][i] = tempFace[i][1];
 			cube.cube[4][2][i] = tempFace[i][0];
 		}
-		cout << "Action Completed!(High row counterclockwise)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -330,7 +321,6 @@ void Cube::DownRowMove(Cube& cube, int& selectTurn)
 			cube.cube[5][1][i] = tempFace[i][1];
 			cube.cube[5][2][i] = tempFace[i][0];
 		}
-		cout << "Action Completed!(Down row clockwise)\n";
 		selectTurn = 0;
 		break;
 
@@ -349,12 +339,10 @@ void Cube::DownRowMove(Cube& cube, int& selectTurn)
 			cube.cube[5][i][1] = tempFace[1][i];
 			cube.cube[5][i][2] = tempFace[0][i];
 		}
-		cout << "Action Completed!(Down row counterclockwise)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -389,7 +377,6 @@ void Cube::FrontFaceMove(Cube& cube, int& selectTurn)
 			cube.cube[0][1][i] = tempFace[i][1];
 			cube.cube[0][2][i] = tempFace[i][0];
 		}
-		cout << "Action Completed!(Front face counterclockwise)\n";
 		selectTurn = 0;
 		break;
 
@@ -408,12 +395,10 @@ void Cube::FrontFaceMove(Cube& cube, int& selectTurn)
 			cube.cube[0][i][1] = tempFace[1][i];
 			cube.cube[0][i][2] = tempFace[0][i];
 		}
-		cout << "Action Completed!(Front face clockwise)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -449,7 +434,6 @@ void Cube::BackFaceMove(Cube& cube, int& selectTurn)
 			cube.cube[2][i][2] = tempFace[0][i];
 
 		}
-		cout << "Action Completed!(Back face counterclockwise)\n";
 		selectTurn = 0;
 		break;
 
@@ -469,12 +453,10 @@ void Cube::BackFaceMove(Cube& cube, int& selectTurn)
 			cube.cube[2][2][i] = tempFace[i][0];
 
 		}
-		cout << "Action Completed!(Back face clockwise)\n";
 		selectTurn = 0;
 		break;
 
 	default:
-		cout << "Invalid selection." << endl;
 		selectTurn = 0;
 		break;
 	}
@@ -484,8 +466,6 @@ void Cube::RandomFilling(Cube& cube)
 {
 	FillingTheCube(cube);
 	int MoveNums = RandomNumber(10, 30);
-	cout << "Moves comlited:" << MoveNums << endl;
-	cout << "They are:\n";
 	for (int i = 0; i < MoveNums; i++)
 	{
 		int way = RandomNumber(1, 6);
@@ -546,7 +526,6 @@ void Cube::ReadCubeFromFile(const string& filename)
 	std::ifstream file(filename + ".txt");
 	if (!file.is_open())
 	{
-		cerr << "Error: cannot open the file " << filename << std::endl;
 		return;
 	}
 
@@ -601,11 +580,9 @@ void Cube::transferToCube()
 		}
 		else
 		{
-			std::cerr << "Invalid daat\n";
+			return;
 		}
 	}
-
-	cout << "Cube loaded from the selected file\n";
 }
 
 bool Cube::isSolvable() {
